@@ -1,0 +1,73 @@
+int valorDeRetornoDown;
+int valorDeRetornoUp;
+
+
+int valorActual;
+int valorAnterior=0;
+int estadoLed;
+
+void setup() {
+  // put your setup code here, to ru
+  pinMode(4,INPUT);
+  pinMode(10,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  valorActual = digitalRead(4);
+  if(valorActual != valorAnterior)
+  {
+    if(valorActual == 1)
+    {
+      estadoLed = 1-estadoLed;
+      digitalWrite(10, estadoLed);
+    }
+  }
+  delay(150);
+  Serial.print("Valor de retornoUp: ");
+  Serial.println(valorActual);
+  
+  /*digitalWrite(13, HIGH);
+  delay(500);
+  digitalWrite(13, LOW);
+  delay(500);*/
+}
+
+
+
+
+
+
+SERVO
+
+#include <Servo.h>
+#define PIN_SERVO_AZUL_CHETO 6
+
+Servo miServoPolenta;
+
+int grados;
+int sube;
+
+void setup()
+{
+  miServoPolenta.attach(PIN_SERVO_AZUL_CHETO, 500, 2500);
+  
+  grados= 0;
+  Serial.begin(9600);
+  sube = 0;
+}
+
+void loop()
+{
+  miServoPolenta.write(180);
+  delay(1500);
+  miServoPolenta.write(0);
+  delay(1500);
+  
+  
+  /*digitalWrite(13, HIGH);
+  delay(1000); // Wait for 1000 millisecond(s)
+  digitalWrite(13, LOW);
+  delay(1000); // Wait for 1000 millisecond(s)*/
+}
